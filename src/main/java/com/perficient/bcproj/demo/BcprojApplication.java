@@ -1,0 +1,13 @@
+package com.perficient.bcproj.demo;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class BcprojApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(BcprojApplication.class, args);
+	}
+
+}
