@@ -15,12 +15,14 @@ import java.util.UUID;
 @Entity
 public class Appointment {
 
-    //TODO figure out UUID for appointment 
+
     @Id
+    private UUID id;
     private String apptName;
     private String apptType;
     private String description;
     private String startTime;
     private String endTime;
     private String metaData;
+
 }
