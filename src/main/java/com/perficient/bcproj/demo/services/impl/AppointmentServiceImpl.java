@@ -41,7 +41,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     public void deleteAppointment(UUID id) {
-
+        appointmentRepository.deleteApptById(id);
     }
 }
 
