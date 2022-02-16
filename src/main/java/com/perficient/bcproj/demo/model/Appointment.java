@@ -5,14 +5,18 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.UUID;
 
-@Data
+
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@Entity
 public class Appointment {
 
+    //TODO figure out UUID for appointment 
+    @Id
     private String apptName;
     private String apptType;
     private String description;
