@@ -1,4 +1,4 @@
-package com.perficient.bcproj.demo.model;
+package com.perfiecent.bcproj.appointment.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

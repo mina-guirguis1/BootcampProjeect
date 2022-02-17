@@ -1,15 +1,19 @@
-package com.perficient.bcproj.demo.services.impl;
+package com.perfiecent.bcproj.appointment.service.impl;
 
-import com.perficient.bcproj.demo.model.Appointment;
-import com.perficient.bcproj.demo.controller.repository.AppointmentRepository;
-import com.perficient.bcproj.demo.services.AppointmentService;
+
+import com.perfiecent.bcproj.appointment.model.Appointment;
+import com.perfiecent.bcproj.appointment.repository.AppointmentRepository;
+import com.perfiecent.bcproj.appointment.service.AppointmentService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
 
+@Service
 public class AppointmentServiceImpl implements AppointmentService {
 
     private AppointmentRepository appointmentRepository;
+
 
     public AppointmentServiceImpl(AppointmentRepository appointmentRepository) {
         super();
@@ -39,7 +43,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     public void deleteAppointment(UUID id) {
-
+        appointmentRepository.deleteApptById(id);
     }
 }
 
