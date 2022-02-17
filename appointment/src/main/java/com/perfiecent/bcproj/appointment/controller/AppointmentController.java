@@ -28,22 +28,22 @@ public class AppointmentController {
     }
 
     @GetMapping("/api/appointments/{id}")
-    public ResponseEntity<Appointment> getAppointmentById(@PathVariable("id") UUID id) {
+    public ResponseEntity<Appointment> getAppointmentById(@PathVariable("id") long id) {
         return new ResponseEntity<Appointment>(appointmentService.getAppointmentById(id), HttpStatus.OK);
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Appointment> updateAppointment(@PathVariable("id") UUID id, @RequestBody Appointment appointment) {
+    public ResponseEntity<Appointment> updateAppointment(@PathVariable("id") long id, @RequestBody Appointment appointment) {
         return new ResponseEntity<Appointment>(appointmentService.updateAppointment(appointment,id), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Appointment> getAllApointments(@PathVariable("id") UUID id) {
+    public ResponseEntity<Appointment> getAllApointments(@PathVariable("id") long id) {
         return new ResponseEntity<Appointment>(appointmentService.getAppointmentById(id), HttpStatus.OK);
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<String> deleteAppointment(@PathVariable("id") UUID id) {
+    public ResponseEntity<String> deleteAppointment(@PathVariable("id") long id) {
         appointmentService.deleteAppointment(id);
         return new ResponseEntity<String>("Appointment deleted successfully", HttpStatus.OK);
     }

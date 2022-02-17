@@ -26,24 +26,24 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
-    public List<Appointment> findAllById(UUID id) {
+    public List<Appointment> findAllById(long id) {
         return appointmentRepository.findAllById(id);
     }
 
 
     @Override
-    public Appointment getAppointmentById(UUID id) {
-       return null;
+    public Appointment getAppointmentById(long id) {
+       return appointmentRepository.getById(id);
     }
 
     @Override
-    public Appointment updateAppointment(Appointment appointment, UUID id) {
+    public Appointment updateAppointment(Appointment appointment, long id) {
         return null;
     }
 
     @Override
-    public void deleteAppointment(UUID id) {
-        appointmentRepository.deleteApptById(id);
+    public void deleteAppointment(long id) {
+        appointmentRepository.deleteById(id);
     }
 }
 

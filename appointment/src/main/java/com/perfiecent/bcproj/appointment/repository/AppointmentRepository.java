@@ -10,8 +10,8 @@ import java.util.UUID;
 
 public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
 
-    List<Appointment> findAllById(UUID id);
+    List<Appointment> findAllById(long id);
 
-    void deleteApptById(UUID id);
+    void deleteApptById(long id);
 
 }

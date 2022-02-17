@@ -10,13 +10,13 @@ public interface AppointmentService {
 
     Appointment createAppointment(Appointment appointment);
 
-    List<Appointment> findAllById(UUID id);
+    List<Appointment> findAllById(long id);
 
-    Appointment getAppointmentById(UUID id);
+    Appointment getAppointmentById(long id);
 
-    Appointment updateAppointment(Appointment appointment, UUID id);
+    Appointment updateAppointment(Appointment appointment, long id);
 
-    void deleteAppointment(UUID id);
+    void deleteAppointment(long id);
 
 
 }
