@@ -1,7 +1,8 @@
-package com.perficient.bcproj.demo.controller;
+package com.perfiecent.bcproj.appointment.controller;
 
-import com.perficient.bcproj.demo.model.Appointment;
-import com.perficient.bcproj.demo.services.AppointmentService;
+
+import com.perfiecent.bcproj.appointment.model.Appointment;
+import com.perfiecent.bcproj.appointment.service.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

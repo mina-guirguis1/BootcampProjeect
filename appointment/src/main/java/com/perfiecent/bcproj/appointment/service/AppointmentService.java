@@ -1,6 +1,7 @@
-package com.perficient.bcproj.demo.services;
+package com.perfiecent.bcproj.appointment.service;
 
-import com.perficient.bcproj.demo.model.Appointment;
+
+import com.perfiecent.bcproj.appointment.model.Appointment;
 
 import java.util.List;
 import java.util.UUID;

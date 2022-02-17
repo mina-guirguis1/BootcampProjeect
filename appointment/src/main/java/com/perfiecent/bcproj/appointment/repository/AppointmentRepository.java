@@ -1,6 +1,7 @@
-package com.perficient.bcproj.demo.controller.repository;
+package com.perfiecent.bcproj.appointment.repository;
 
-import com.perficient.bcproj.demo.model.Appointment;
+
+import com.perfiecent.bcproj.appointment.model.Appointment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.*;
 
