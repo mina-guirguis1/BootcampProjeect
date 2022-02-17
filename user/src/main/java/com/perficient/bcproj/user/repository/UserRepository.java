@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    List<User> findALlById(Long id);
+    List<User> findAllById(Long id);
 
     void deleteUserById(Long id);
 }
