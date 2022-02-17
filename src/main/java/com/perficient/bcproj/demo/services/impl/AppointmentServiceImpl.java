@@ -1,12 +1,10 @@
 package com.perficient.bcproj.demo.services.impl;
 
 import com.perficient.bcproj.demo.model.Appointment;
-import com.perficient.bcproj.demo.repository.AppointmentRepository;
+import com.perficient.bcproj.demo.controller.repository.AppointmentRepository;
 import com.perficient.bcproj.demo.services.AppointmentService;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 public class AppointmentServiceImpl implements AppointmentService {

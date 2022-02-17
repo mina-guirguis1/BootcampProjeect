@@ -1,6 +1,6 @@
-package com.perficient.bcproj.demo.repository;
+package com.perficient.bcproj.user.repository;
 
-import com.perficient.bcproj.demo.model.User;
+import com.perficient.bcproj.user.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

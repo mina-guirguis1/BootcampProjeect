@@ -1,6 +1,6 @@
-package com.perficient.bcproj.demo.services;
+package com.perficient.bcproj.user.services;
 
-import com.perficient.bcproj.demo.model.User;
+import com.perficient.bcproj.user.model.User;
 
 import java.util.List;
 import java.util.UUID;

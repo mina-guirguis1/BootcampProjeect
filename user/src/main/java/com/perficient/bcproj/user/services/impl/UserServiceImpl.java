@@ -1,8 +1,8 @@
-package com.perficient.bcproj.demo.services.impl;
+package com.perficient.bcproj.user.services.impl;
 
-import com.perficient.bcproj.demo.model.User;
-import com.perficient.bcproj.demo.repository.UserRepository;
-import com.perficient.bcproj.demo.services.UserService;
+import com.perficient.bcproj.user.model.User;
+import com.perficient.bcproj.user.repository.UserRepository;
+import com.perficient.bcproj.user.services.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
