@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+@Service
 public class AppointmentServiceImpl implements AppointmentService {
 
     private AppointmentRepository appointmentRepository;
