@@ -33,6 +33,6 @@ public class Appointment {
     private String endTime;
 
     @Column(name = "metaData", nullable = false)
-    private String metaData;
+    private long metaData;
 
 }
