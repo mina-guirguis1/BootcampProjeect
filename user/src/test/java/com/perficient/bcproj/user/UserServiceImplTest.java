@@ -85,7 +85,7 @@ public class UserServiceImplTest {
 
         // TODO: Figure out why this error is being thrown:
         // org.hibernate.LazyInitializationException: could not initialize proxy - no Session
-        User gottenUser = userRepository.getById(otherTestUser.getId());
+        User gottenUser = userRepository.getUserById(otherTestUser.getId());
         User updatedUser = User.builder()
                 .id(gottenUser.getId())
                 .firstName(gottenUser.getFirstName())
@@ -97,7 +97,7 @@ public class UserServiceImplTest {
                 .build();
 
         userRepository.save(updatedUser);
-        updatedUser = userRepository.getById(gottenUser.getId());
+        updatedUser = userRepository.getUserById(otherTestUser.getId());
 
         assertThat(updatedUser.getGender().equals("Female"));
         assertThat(updatedUser.getAge().equals(23));
