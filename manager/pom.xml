@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.perficient.bcproj</groupId>
-	<artifactId>user</artifactId>
+	<artifactId>manager</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>user</name>
-	<description>User Module</description>
+	<name>manager</name>
+	<description>Bootcamp Project Manager</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -46,10 +46,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-jms</artifactId>
 		</dependency>
 	</dependencies>
 
