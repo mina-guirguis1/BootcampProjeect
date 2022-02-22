@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
-@RequestMapping("/api/appointments")
+@RequestMapping("/api/appointments/v1")
 @Controller
 public class AppointmentController {
 
@@ -27,7 +27,7 @@ public class AppointmentController {
         return new ResponseEntity<Appointment>(appointmentService.createAppointment(appointment), HttpStatus.CREATED);
     }
 
-    @GetMapping("/api/appointments/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Appointment> getAppointmentById(@PathVariable("id") long id) {
         return new ResponseEntity<Appointment>(appointmentService.getAppointmentById(id), HttpStatus.OK);
     }
@@ -37,7 +37,7 @@ public class AppointmentController {
         return new ResponseEntity<Appointment>(appointmentService.updateAppointment(appointment,id), HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/api/appointments/v1/{id}")
     public ResponseEntity<Appointment> getAllApointments(@PathVariable("id") long id) {
         return new ResponseEntity<Appointment>(appointmentService.getAppointmentById(id), HttpStatus.OK);
     }
