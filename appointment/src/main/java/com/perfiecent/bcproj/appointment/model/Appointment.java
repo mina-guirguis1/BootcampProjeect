@@ -5,35 +5,37 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.UUID;
 
-@Builder
-@Data
+
+@Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Builder
 @Table(name="appointmentdb")
 public class Appointment {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "apptName", nullable = false)
+    @Column(name = "appt_name", nullable = false)
     private String apptName;
 
-    @Column(name = "apptType", nullable = false)
+    @Column(name = "appt_type", nullable = false)
     private String apptType;
 
     @Column(name = "description")
     private String description;
 
-    @Column(name = "startTime", nullable = false)
+    @Column(name = "start_time", nullable = false)
     private String startTime;
 
-    @Column(name = "endTime", nullable = false)
+    @Column(name = "end_time", nullable = false)
     private String endTime;
 
-    @Column(name = "metaData", nullable = false)
+    @Column(name = "meta_data", nullable = false)
     private long metaData;
 
 }

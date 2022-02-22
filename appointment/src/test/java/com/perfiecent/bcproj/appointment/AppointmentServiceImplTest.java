@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.AssertionsForClassTypes.*;
 
 @SpringBootTest
-public class AppointmentServiceImplText {
+public class AppointmentServiceImplTest {
 
     private static long id = 1L;
     private static String apptName = "Dentist Appointment";
