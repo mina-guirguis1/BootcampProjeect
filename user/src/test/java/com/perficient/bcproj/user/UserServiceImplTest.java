@@ -7,7 +7,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.AssertionsForClassTypes.*;
@@ -83,8 +82,6 @@ public class UserServiceImplTest {
     @Test
     void updateUserTest(){
 
-        // TODO: Figure out why this error is being thrown:
-        // org.hibernate.LazyInitializationException: could not initialize proxy - no Session
         User gottenUser = userRepository.getUserById(otherTestUser.getId());
         User updatedUser = User.builder()
                 .id(gottenUser.getId())
