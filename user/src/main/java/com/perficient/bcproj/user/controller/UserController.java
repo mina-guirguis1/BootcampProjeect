@@ -3,12 +3,15 @@ package com.perficient.bcproj.user.controller;
 
 import com.perficient.bcproj.user.model.User;
 import com.perficient.bcproj.user.services.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
+@Slf4j
 @RestController
 @RequestMapping("/api/v1/user")
 public class UserController {
@@ -23,10 +26,12 @@ public class UserController {
     @PostMapping()
     public ResponseEntity<User> createUser(@RequestBody User user){
         return new ResponseEntity<User>(userService.createUser(user), HttpStatus.CREATED);
+        //log.debug("Created User");
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable("id") long id){
+        log.debug("Got User");
         return new ResponseEntity<User>(userService.getUserById(id), HttpStatus.OK);
     }
 
