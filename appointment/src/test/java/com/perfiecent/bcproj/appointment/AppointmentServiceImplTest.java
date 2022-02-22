@@ -8,8 +8,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.transaction.Transactional;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.AssertionsForClassTypes.*;
+
 
 @SpringBootTest
 public class AppointmentServiceImplTest {
@@ -34,7 +37,6 @@ public class AppointmentServiceImplTest {
     @BeforeEach
     void setUp() {
         appointmentTest = Appointment.builder()
-                .id(1L)
                 .apptName("Dentist Appointment")
                 .apptType("Dental")
                 .description("Teeth cleaning")
@@ -45,7 +47,6 @@ public class AppointmentServiceImplTest {
         appointmentRepository.save(appointmentTest);
 
         otherAppointmentTest = Appointment.builder()
-                .id(3L)
                 .apptName("Check up")
                 .apptType("Primary Care")
                 .description("Yearly checkup")
@@ -76,6 +77,7 @@ public class AppointmentServiceImplTest {
     void getAppointmentTest() {assertThat(appointmentRepository.findAll().size() == 2);}
 
     @Test
+    @Transactional
     void updateUserTest() {
 
         Appointment gotAppointment = appointmentRepository.getById(otherAppointmentTest.getId());
@@ -83,8 +85,8 @@ public class AppointmentServiceImplTest {
                 .id(gotAppointment.getId())
                 .apptName(gotAppointment.getApptName())
                 .apptType(gotAppointment.getApptType())
-                .description(gotAppointment.getDescription())
-                .startTime(gotAppointment.getStartTime())
+                .description("testing this")
+                .startTime("testing this again")
                 .endTime(gotAppointment.getEndTime())
                 .metaData(gotAppointment.getMetaData())
                 .build();
