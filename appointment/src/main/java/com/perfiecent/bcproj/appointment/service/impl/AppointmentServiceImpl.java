@@ -1,6 +1,7 @@
 package com.perfiecent.bcproj.appointment.service.impl;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.perfiecent.bcproj.appointment.model.Appointment;
 import com.perfiecent.bcproj.appointment.repository.AppointmentRepository;
 import com.perfiecent.bcproj.appointment.service.AppointmentService;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.UUID;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Service
 public class AppointmentServiceImpl implements AppointmentService {
 
