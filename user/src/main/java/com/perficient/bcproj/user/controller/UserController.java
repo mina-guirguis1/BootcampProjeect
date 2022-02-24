@@ -4,6 +4,7 @@ package com.perficient.bcproj.user.controller;
 import com.perficient.bcproj.user.model.User;
 import com.perficient.bcproj.user.services.UserService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +28,12 @@ public class UserController {
     public ResponseEntity<User> createUser(@RequestBody User user){
         return new ResponseEntity<User>(userService.createUser(user), HttpStatus.CREATED);
         //log.debug("Created User");
+    }
+
+    @GetMapping("/{email}")
+    public ResponseEntity<User> getUserByEmail(@PathVariable("email") String email){
+
+        return new Response()<User>(userService.getUserByEmail(email));
     }
 
     @GetMapping("/{id}")

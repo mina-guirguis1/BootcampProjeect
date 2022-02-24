@@ -33,6 +33,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User getUserByEmail(String email) {
+        return userRepository.getUserByEmail(email);
+    }
+
+    @Override
+    public User getUserByPhoneNumber(String phoneNumber) {
+        return userRepository.getUserByPhoneNumber(phoneNumber);
+    }
+
+    @Override
     public User updateUser(User user, Long id) {
         User existingUser = userRepository.getById(id);
         existingUser.setAge(user.getAge());
