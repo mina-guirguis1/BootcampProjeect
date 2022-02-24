@@ -11,6 +11,8 @@ public interface UserService {
     List<User> getAllUsers();
 
     User getUserById(Long id);
+    User getUserByEmail(String email);
+    User getUserByPhoneNumber(String phoneNumber);
 
     User updateUser(User user, Long id);
 
