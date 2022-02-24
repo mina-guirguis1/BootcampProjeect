@@ -26,20 +26,27 @@ public class UserController {
 
     @PostMapping()
     public ResponseEntity<User> createUser(@RequestBody User user){
+        log.debug("Created User");
         return new ResponseEntity<User>(userService.createUser(user), HttpStatus.CREATED);
-        //log.debug("Created User");
     }
 
-    @GetMapping("/{email}")
+    @GetMapping("/email/{email}")
     public ResponseEntity<User> getUserByEmail(@PathVariable("email") String email){
 
-        return new Response()<User>(userService.getUserByEmail(email));
+        log.debug("Requesting email: " + email);
+        return new ResponseEntity<User>(userService.getUserByEmail(email), HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public ResponseEntity<User> getUserById(@PathVariable("id") long id){
         log.debug("Got User");
         return new ResponseEntity<User>(userService.getUserById(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/phone/{phoneNumber}")
+    public ResponseEntity<User> getUserByPhoneNumber(@PathVariable("phoneNumber") String phoneNumber){
+        log.debug("Getting user with phone: " + phoneNumber);
+        return new ResponseEntity<User>(userService.getUserByPhoneNumber(phoneNumber), HttpStatus.OK);
     }
 
     @PutMapping("{id}")
