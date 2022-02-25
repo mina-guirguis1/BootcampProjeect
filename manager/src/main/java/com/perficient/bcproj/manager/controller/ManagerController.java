@@ -13,5 +13,4 @@ public class ManagerController {
         return "login";
     }
 
-
 }

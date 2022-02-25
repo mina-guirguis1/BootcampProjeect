@@ -3,9 +3,11 @@ package com.perficient.bcproj.manager.services.impl;
 import com.perficient.bcproj.manager.model.Login;
 import com.perficient.bcproj.manager.repository.LoginRepository;
 import com.perficient.bcproj.manager.services.LoginService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class LoginServiceImpl implements LoginService {
 
     private LoginRepository loginRepository;
