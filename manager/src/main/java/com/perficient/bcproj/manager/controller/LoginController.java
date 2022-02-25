@@ -12,7 +12,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/v1/login/")
+@RequestMapping("/api/v1/login")
 public class LoginController {
 
     private LoginService loginService;
@@ -21,25 +21,25 @@ public class LoginController {
         this.loginService = loginService;
     }
 
-    @GetMapping("loginRepo")
+    @GetMapping("/loginRepo")
     public ResponseEntity<List<Login>> getAllLogins(){
         log.debug("Getting all logins");
         return new ResponseEntity<List<Login>>(loginService.getAllLogins(), HttpStatus.OK);
     }
 
-    @GetMapping("id/{id}")
+    @GetMapping("/id/{id}")
     public ResponseEntity<Login> getLoginById(@PathVariable("id") Long id){
         log.debug("Got user by id");
         return new ResponseEntity<Login>(loginService.getLoginById(id), HttpStatus.OK);
     }
 
-    @GetMapping("email/{email}")
+    @GetMapping("/email/{email}")
     public ResponseEntity<Login> getLoginByEmail(@PathVariable("email") String email){
         log.debug("Got user by email");
         return new ResponseEntity<Login>(loginService.getLoginByEmail(email), HttpStatus.OK);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Login> updateLogin(@PathVariable("id") long id, @RequestBody Login login){
         log.debug("Updated Login");
         return new ResponseEntity<Login>(loginService.updateLogin(login, id), HttpStatus.OK);
@@ -51,9 +51,10 @@ public class LoginController {
         return new ResponseEntity<Login>(loginService.createLogin(login), HttpStatus.CREATED);
     }
 
-    @DeleteMapping("{id}")
-    public void deleteLogin(@PathVariable("id") long id){
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteLogin(@PathVariable("id") long id){
         log.debug("Deleting Login");
         loginService.deleteLogin(id);
+        return new ResponseEntity<String>("Login deleted successfully",HttpStatus.OK);
     }
 }

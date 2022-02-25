@@ -19,6 +19,7 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public Login createLogin(Login login) {
+        // TODO: check that login already exists
         return loginRepository.save(login);
     }
 
