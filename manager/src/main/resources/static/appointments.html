@@ -9,11 +9,29 @@
     <!-- jQuery Modal -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="signupstyle.css"/>
-    <script src="appointments.js"></script>
+    <!--<script src="appointments.js"></script>-->
+    <script type="text/javascript">
+        $(document).ready(function() {
+			$.getJSON('http://localhost:8082/api/v1/appointments/1', function(json) {
+				var tr=[];
+				tr.push('<tr>');
+				tr.push('<td>' + json.apptName + '</td>');
+				tr.push('<td>' + json.apptType + '</td>');
+				tr.push('<td>' + json.description + '</td>');
+				tr.push('<td>' + json.startTime + '</td>');
+				tr.push('<td>' + json.endTime + '</td>');
+				tr.push('<td><button type="Submit" id="edit" class="btn btn-secondary">Edit</button>&nbsp;&nbsp;<button class="btn btn-warning" id="delete" onclick="deleteThis()" value='+ json[i].id +'>Delete</button></td>');
+				tr.push('</tr>');
+					//tr.push('<td><button type="Submit" id="edit" class="btn btn-secondary">Edit</button>&nbsp;&nbsp;<button class=\'delete\' id=' + json[i].id + '>Delete</button></td>');
+				//<button type="Submit" id="edit" class="btn btn-secondary">Edit</button>
+				$('table').append($(tr.join('')));
+			});
+    </script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -49,23 +67,5 @@
     <tr>
     </tr>
 </table>
-<script type="text/javascript">
-        $(document).ready(function() {
-			$.getJSON('http://localhost:8082/api/v1/appointments/1', function(json) {
-				var tr=[];
-				for (var i = 0; i < json.length; i++) {
-					tr.push('<tr>');
-					tr.push('<td>' + json[i].apptName + '</td>');
-					tr.push('<td>' + json[i].apptType + '</td>');
-					tr.push('<td>' + json[i].description + '</td>');
-					tr.push('<td>' + json[i].startTime + '</td>');
-					tr.push('<td>' + json[i].endTime + '</td>');
-					tr.push('<td><button type="Submit" id="edit" class="btn btn-secondary">Edit</button>&nbsp;&nbsp;<button class="btn btn-warning" id="delete" onclick="deleteThis()" value='+ json[i].id +'>Delete</button></td>');
-					tr.push('</tr>');
-					//tr.push('<td><button type="Submit" id="edit" class="btn btn-secondary">Edit</button>&nbsp;&nbsp;<button class=\'delete\' id=' + json[i].id + '>Delete</button></td>');
-				}//<button type="Submit" id="edit" class="btn btn-secondary">Edit</button>
-				$('table').append($(tr.join('')));
-			});
-    </script>
 </body>
 </html>
