@@ -1,4 +1,4 @@
 function getAppts(){
-    $ajax({
-    })
+    var appt;
+    $.getJSON()
 }
