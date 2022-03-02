@@ -17,20 +17,18 @@
     <!--<script src="appointments.js"></script>-->
     <script type="text/javascript">
         $(document).ready(function() {
-			$.getJSON('http://localhost:8082/api/v1/appointments/1', function(json) {
-				var tr=[];
-				tr.push('<tr>');
-				tr.push('<td>' + json.apptName + '</td>');
-				tr.push('<td>' + json.apptType + '</td>');
-				tr.push('<td>' + json.description + '</td>');
-				tr.push('<td>' + json.startTime + '</td>');
-				tr.push('<td>' + json.endTime + '</td>');
-				tr.push('<td><button type="Submit" id="edit" class="btn btn-secondary">Edit</button>&nbsp;&nbsp;<button class="btn btn-warning" id="delete" onclick="deleteThis()" value='+ json[i].id +'>Delete</button></td>');
-				tr.push('</tr>');
-					//tr.push('<td><button type="Submit" id="edit" class="btn btn-secondary">Edit</button>&nbsp;&nbsp;<button class=\'delete\' id=' + json[i].id + '>Delete</button></td>');
-				//<button type="Submit" id="edit" class="btn btn-secondary">Edit</button>
-				$('table').append($(tr.join('')));
-			});
+            $.getJSON('http://localhost:8082/api/v1/appointments/1', function(json) {
+                var tr=[];
+                tr.push('<tr>');
+                tr.push('<td>' + json.apptName + '</td>');
+                tr.push('<td>' + json.apptType + '</td>');
+                tr.push('<td>' + json.description + '</td>');
+                tr.push('<td>' + json.startTime + '</td>');
+                tr.push('<td>' + json.endTime + '</td>');
+                //tr.push('<td><button type="Submit" id="edit" class="btn btn-secondary">Edit</button>&nbsp;&nbsp;<button class="btn btn-warning" id="delete" onclick="deleteThis()" value='+ json[i].id +'>Delete</button></td>');
+                tr.push('</tr>');
+                $('table').append($(tr.join('')));
+            })});
     </script>
 </head>
 <body>
