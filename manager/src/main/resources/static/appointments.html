@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="signupstyle.css"/>
-    <!--<script src="appointments.js"></script>-->
+    <script src="appointments.js"></script>
     <!--
     	//tr.push('<td><button type="Submit" id="edit" class="btn btn-secondary">Edit</button>&nbsp;&nbsp;<button class=\'delete\' id=' + json[i].id + '>Delete</button></td>');
         <button type="Submit" id="edit" class="btn btn-secondary">Edit</button>
@@ -22,16 +22,18 @@
     <script type="text/javascript">
         $(document).ready(function() {
 
-            $.getJSON('http://localhost:8082/api/v1/appointments/1', function(json) {
+            $.getJSON('http://localhost:8082/api/v1/appointments/findAllByMetaData/1', function(json) {
                 var tr=[];
+                for (var i = 0; i < json.length; i++) {
                 tr.push('<tr>');
-                tr.push('<td>' + json.apptName + '</td>');
-                tr.push('<td>' + json.apptType + '</td>');
-                tr.push('<td>' + json.description + '</td>');
-                tr.push('<td>' + json.startTime + '</td>');
-                tr.push('<td>' + json.endTime + '</td>');
-                //tr.push('<td><button type="Submit" id="edit" class="btn btn-secondary">Edit</button>&nbsp;&nbsp;<button class="btn btn-warning" id="delete" onclick="deleteThis()" value='+ json[i].id +'>Delete</button></td>');
+                tr.push('<td>' + json[i].apptName + '</td>');
+                tr.push('<td>' + json[i].apptType + '</td>');
+                tr.push('<td>' + json[i].description + '</td>');
+                tr.push('<td>' + json[i].startTime + '</td>');
+                tr.push('<td>' + json[i].endTime + '</td>');
+                tr.push('<td><button type="Submit" value= json[i].id id="edit" onclick="editAppts(this.id)" class="btn btn-secondary">Edit</button>&nbsp;&nbsp;<button class="btn btn-warning" id="delete" onclick="deleteThis(this.value)" value='+ json[i].id +'>Delete</button></td>');
                 tr.push('</tr>');
+                }
                 $('table').append($(tr.join('')));
             })});
     </script>
