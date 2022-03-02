@@ -15,6 +15,10 @@
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="signupstyle.css"/>
     <!--<script src="appointments.js"></script>-->
+    <!--
+    	//tr.push('<td><button type="Submit" id="edit" class="btn btn-secondary">Edit</button>&nbsp;&nbsp;<button class=\'delete\' id=' + json[i].id + '>Delete</button></td>');
+        <button type="Submit" id="edit" class="btn btn-secondary">Edit</button>
+        -->
     <script type="text/javascript">
         $(document).ready(function() {
 			$.getJSON('http://localhost:8082/api/v1/appointments/1', function(json) {
@@ -25,12 +29,10 @@
 				tr.push('<td>' + json.description + '</td>');
 				tr.push('<td>' + json.startTime + '</td>');
 				tr.push('<td>' + json.endTime + '</td>');
-				tr.push('<td><button type="Submit" id="edit" class="btn btn-secondary">Edit</button>&nbsp;&nbsp;<button class="btn btn-warning" id="delete" onclick="deleteThis()" value='+ json[i].id +'>Delete</button></td>');
+				//tr.push('<td><button type="Submit" id="edit" class="btn btn-secondary">Edit</button>&nbsp;&nbsp;<button class="btn btn-warning" id="delete" onclick="deleteThis()" value='+ json[i].id +'>Delete</button></td>');
 				tr.push('</tr>');
-					//tr.push('<td><button type="Submit" id="edit" class="btn btn-secondary">Edit</button>&nbsp;&nbsp;<button class=\'delete\' id=' + json[i].id + '>Delete</button></td>');
-				//<button type="Submit" id="edit" class="btn btn-secondary">Edit</button>
 				$('table').append($(tr.join('')));
-			});
+			})});
     </script>
 </head>
 <body>
