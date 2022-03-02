@@ -58,6 +58,11 @@ public class AppointmentServiceImpl implements AppointmentService {
     public void deleteAppointment(long id) {
         appointmentRepository.deleteById(id);
     }
+
+    @Override
+    public List<Appointment> findAllByMetaData(long metadata) {
+        return appointmentRepository.findAllByMetaData(metadata);
+    }
 }
 
 

@@ -18,5 +18,7 @@ public interface AppointmentService {
 
     void deleteAppointment(long id);
 
+    List<Appointment> findAllByMetaData(long metdata);
+
 
 }

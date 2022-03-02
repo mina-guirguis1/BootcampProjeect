@@ -4,13 +4,11 @@ package com.perfiecent.bcproj.appointment.controller;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.perfiecent.bcproj.appointment.model.Appointment;
 import com.perfiecent.bcproj.appointment.service.AppointmentService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.UUID;
+import java.util.List;
 
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @RestController
@@ -32,6 +30,11 @@ public class AppointmentController {
     @GetMapping("/{id}")
     public ResponseEntity<Appointment> getAppointmentById(@PathVariable("id") long id) {
         return new ResponseEntity<Appointment>(appointmentService.getAppointmentById(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/findAllByMetaData/{metadata}")
+    public ResponseEntity<List<Appointment>> getAppointmentByMetadata(@PathVariable("metadata") long metadata) {
+        return new ResponseEntity<List<Appointment>>(appointmentService.findAllByMetaData(metadata), HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
