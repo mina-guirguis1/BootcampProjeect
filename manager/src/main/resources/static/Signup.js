@@ -22,8 +22,7 @@ function createUser() {
             url: "http://localhost:8081/api/v1/user",
             data: JSON.stringify({"email" : email.toString(), "firstName" : firstName.toString(),
             "lastName" : lastName.toString(), "gender" : gender.toString(), "age" : age,
-            "phoneNumber" : phoneNumber.toString()
-            }),
+            "phoneNumber" : phoneNumber.toString()}),
             cache: false
                 })
 }
