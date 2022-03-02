@@ -16,4 +16,6 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
 
     void deleteApptById(long id);
 
+    List<Appointment> findAllByMetaData(long metadata);
+
 }
