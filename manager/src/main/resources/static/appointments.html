@@ -31,12 +31,25 @@
                 tr.push('<td>' + json[i].description + '</td>');
                 tr.push('<td>' + json[i].startTime + '</td>');
                 tr.push('<td>' + json[i].endTime + '</td>');
-                tr.push('<td><button type="Submit" value= json[i].id id="edit" onclick="editAppts(this.id)" class="btn btn-secondary">Edit</button>&nbsp;&nbsp;<button class="btn btn-warning" id="delete" onclick="deleteThis(this.value)" value='+ json[i].id +'>Delete</button></td>');
+                tr.push('<td><button type="Submit" value= '+ json[i].id +' id="edit" onclick="editAppts(this.value)" class="btn btn-secondary">Edit</button>&nbsp;&nbsp;<button class="btn btn-warning" id="delete" onclick="deleteThis(this.value)" value='+ json[i].id +'>Delete</button></td>');
                 tr.push('</tr>');
                 }
                 $('table').append($(tr.join('')));
             })});
     </script>
+    <style>
+
+.modal {
+ overflow-y: auto;
+}
+
+.modal-open {
+ overflow: auto;
+}
+.modal-backdrop {
+  z-index: -1;
+}
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -57,6 +70,42 @@
         </div>
     </div>
 </nav>
+<div class="my-modal-wrapper row justify-content-center">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add New Item</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="add" action="#"  class="add_form">
+                        <div class="mb-3">
+                            <label for="appt" class="form-label">Appointment</label>
+                            <input type="text" class="form-control" id="appt">
+                            <label for="type" class="form-label">Type</label>
+                            <input type="text" class="form-control" id="type">
+                            <label for="desc" class="form-label">Description</label>
+                            <input type="text" class="form-control" id="desc">
+                            <label for="startTime" class="form-label">Start Time</label>
+                            <input type="text" class="form-control" id="startTime">
+                            <label for="endTime" class="form-label">End Time</label>
+                            <input type="text" class="form-control" id="endTime">
+                        </div>
+                        <button type="submit" id="addNew" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <!--<button type="submit" id="addNew" class="btn btn-primary">Submit</button>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Add New Appointment
+</button>
 
 <table class="table" id="myTable">
     <thead>
