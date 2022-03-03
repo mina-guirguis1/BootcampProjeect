@@ -1,20 +1,18 @@
 function editAppts(id){
-    var parent = $(this).parent().parent();
-	var apptName = parent.children("td:nth-child(1)");
-	var apptType = parent.children("td:nth-child(2)");
-	var desc = parent.children("td:nth-child(3)");
-	var startTime = parent.children("td:nth-child(4)");
-	var endTime = parent.children("td:nth-child(5)");
-	var buttons = parent.children("td:nth-child(6)");
 
-	console.log("Got variables : " + apptName + " " + endTime)
+	console.log("Editing the id : " + id)
 
 	$.ajax({
 	    type: "GET",
+	    url: "",
+	    cache: false,
+	    success : function(){
+	        document.getElementById('Id').value='new value';
+
+	    },
 
 	})
 }
-
 
 function deleteThis(id){
 				if (window.confirm('Do you really want to delete record?')) {

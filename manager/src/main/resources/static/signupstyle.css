@@ -1,6 +1,7 @@
 body {
     background-color: #F3EBF6;
     font-family: 'Ubuntu', sans-serif;
+    z-index:-999,
 }
 
 .main {
@@ -102,6 +103,14 @@ a {
     .main {
         border-radius: 0px;
     }
+
+.my-modal-wrapper {
+    position: absolute;
+    z-index: 9999;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 }
         
         
