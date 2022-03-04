@@ -9,7 +9,7 @@
     <!-- jQuery Modal -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!--<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>-->
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
@@ -19,25 +19,6 @@
     	//tr.push('<td><button type="Submit" id="edit" class="btn btn-secondary">Edit</button>&nbsp;&nbsp;<button class=\'delete\' id=' + json[i].id + '>Delete</button></td>');
         <button type="Submit" id="edit" class="btn btn-secondary">Edit</button>
         -->
-    <script type="text/javascript">
-        $(document).ready(function() {
-            var id = localStorage.getItem("userID");
-
-            $.getJSON('http://localhost:8082/api/v1/appointments/findAllByMetaData/' + id, function(json) {
-                var tr=[];
-                for (var i = 0; i < json.length; i++) {
-                tr.push('<tr>');
-                tr.push('<td>' + json[i].apptName + '</td>');
-                tr.push('<td>' + json[i].apptType + '</td>');
-                tr.push('<td>' + json[i].description + '</td>');
-                tr.push('<td>' + json[i].startTime + '</td>');
-                tr.push('<td>' + json[i].endTime + '</td>');
-                tr.push('<td><button type="Submit" value= '+ json[i].id +' id="edit" onclick="editAppts(this.value)" class="btn btn-secondary">Edit</button>&nbsp;&nbsp;<button class="btn btn-warning" id="delete" onclick="deleteThis(this.value)" value='+ json[i].id +'>Delete</button></td>');
-                tr.push('</tr>');
-                }
-                $('table').append($(tr.join('')));
-            })});
-    </script>
     <style>
 
 .modal {
@@ -93,7 +74,7 @@
                             <label for="endTime" class="form-label">End Time</label>
                             <input type="text" class="form-control" id="endTime">
                         </div>
-                        <button type="submit" onClick="updateAppt()" class="btn btn-primary">Submit</button>
+                        <button type="submit" onClick="newAppt()" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -116,11 +97,13 @@
                         <div class="mb-3">
 
                             <label for="firstName" class="form-label">First Name</label>
-                            <input type="text" class="form-control" id="firstName">
+                            <input type="text" class="form-control" id="firstName" value="">
                             <label for="lastName" class="form-label">Last Name</label>
                             <input type="text" class="form-control" id="lastName">
                             <label for="age" class="form-label">Age</label>
                             <input type="text" class="form-control" id="age">
+                            <label for="gender" class="form-label">Gender</label>
+                            <input type="text" class="form-control" id="gender">
                             <label for="email" class="form-label">Email</label>
                             <input type="text" class="form-control" id="email">
                             <label for="phoneNumber" class="form-label">Phone Number</label>
@@ -136,11 +119,43 @@
         </div>
     </div>
 </div>
+<div class="my-modal-wrapper row justify-content-center">
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New Appointment</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="add3" action="#"  class="add_form">
+                        <div class="mb-3">
+                            <label for="appt2" class="form-label">Appointment</label>
+                            <input type="text" class="form-control" id="appt2">
+                            <label for="type2" class="form-label">Type</label>
+                            <input type="text" class="form-control" id="type2">
+                            <label for="desc2" class="form-label">Description</label>
+                            <input type="text" class="form-control" id="desc2">
+                            <label for="startTime2" class="form-label">Start Time</label>
+                            <input type="text" class="form-control" id="startTime2">
+                            <label for="endTime2" class="form-label">End Time</label>
+                            <input type="text" class="form-control" id="endTime2">
+                        </div>
+                        <button type="submit" onClick="editAppts()" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <!--<button type="submit" id="addNew" class="btn btn-primary">Submit</button>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Add New Appointment
 </button>
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#userModal">
+<button type="button" onClick="editUser()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#userModal">
     Edit User Information
 </button>
 <table class="table" id="myTable">
