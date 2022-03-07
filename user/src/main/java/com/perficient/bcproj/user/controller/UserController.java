@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @Slf4j
 @RestController
 @RequestMapping("/api/v1/user")
@@ -49,7 +48,7 @@ public class UserController {
         return new ResponseEntity<User>(userService.getUserByPhoneNumber(phoneNumber), HttpStatus.OK);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable("id") long id, @RequestBody User user){
         return new ResponseEntity<User>(userService.updateUser(user, id), HttpStatus.OK);
     }
