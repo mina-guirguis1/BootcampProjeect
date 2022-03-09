@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.AssertionsForClassTypes.*;
@@ -37,7 +39,7 @@ public class UserServiceImplTest {
     User otherTestUser;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         testUser = User.builder()
                 .id(1L)
                 .firstName("Test")
@@ -64,7 +66,7 @@ public class UserServiceImplTest {
     }
 
     @Test
-    void saveUserTest(){
+    void saveUserTest() {
 
         User retrievedUser = userRepository.findById(1L).orElse(null);
 
@@ -80,12 +82,12 @@ public class UserServiceImplTest {
     }
 
     @Test
-    void getUsersTest(){
+    void getUsersTest() {
         assertThat(userRepository.findAll().size() == 2);
     }
 
     @Test
-    void updateUserTest(){
+    void updateUserTest() {
 
         User gottenUser = userRepository.getUserById(otherTestUser.getId());
         User updatedUser = User.builder()
@@ -107,9 +109,10 @@ public class UserServiceImplTest {
     }
 
     @Test
-    void deleteUserTest(){
+    void deleteUserTest() {
         userRepository.deleteById(otherTestUser.getId());
         assertThat(userRepository.findById(otherTestUser.getId()).isEmpty());
 
     }
+
 }

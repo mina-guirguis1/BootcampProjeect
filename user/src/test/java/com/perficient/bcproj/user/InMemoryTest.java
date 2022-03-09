@@ -1,6 +1,5 @@
 package com.perficient.bcproj.user;
 
-import com.perficient.bcproj.user.controller.UserController;
 import com.perficient.bcproj.user.model.User;
 import com.perficient.bcproj.user.repository.UserRepository;
 import com.perficient.bcproj.user.services.UserService;
@@ -9,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,8 +18,10 @@ import javax.annotation.Resource;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@ContextConfiguration(classes={UserJpaConfig.class}, loader = AnnotationConfigContextLoader.class)
+//@ContextConfiguration(classes={UserJpaConfig.class}, loader = AnnotationConfigContextLoader.class)
 @Transactional
+@SpringBootTest
+@ActiveProfiles("test")
 public class InMemoryTest {
 
     User testUser;
@@ -32,9 +34,6 @@ public class InMemoryTest {
     private static final Integer age = 22;
     private static final String email = "test@example.com";
     private static final String phoneNumber = "123-456-7890";
-
-    @Resource
-    private UserService userService;
 
     @Resource
     private UserRepository userRepository;
@@ -51,7 +50,7 @@ public class InMemoryTest {
                 .phoneNumber("123-456-7890")
                 .build();
 
-        userService.createUser(testUser);
+        userRepository.save(testUser);
 
         otherTestUser = User.builder()
                 .id(2L)
@@ -63,12 +62,12 @@ public class InMemoryTest {
                 .phoneNumber("123-456-7890")
                 .build();
 
-        userService.createUser(otherTestUser);
+        userRepository.save(otherTestUser);
     }
 
     @Test
     public void givenUser_whenSave_thenGetOk(){
-        User retrievedUser = userService.getUserById(1L);
+        User retrievedUser = userRepository.findById(1L).orElse(null);
 
         assertNotNull(retrievedUser);
         assertEquals(id, retrievedUser.getId());
