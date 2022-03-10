@@ -1,22 +1,31 @@
 package com.perficient.bcproj.user;
 
-import com.perficient.bcproj.user.controller.UserController;
 import com.perficient.bcproj.user.model.User;
 import com.perficient.bcproj.user.repository.UserRepository;
 import com.perficient.bcproj.user.services.UserService;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.assertj.core.api.AssertionsForClassTypes.*;
+import javax.annotation.Resource;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+//@ContextConfiguration(classes={UserJpaConfig.class}, loader = AnnotationConfigContextLoader.class)
+@Transactional
 @SpringBootTest
-public class UserServiceImplTest {
+@ActiveProfiles("test")
+public class InMemoryTest {
+
+    User testUser;
+    User otherTestUser;
 
     private static final Long id = 1L;
     private static final String firstName = "Test";
@@ -26,17 +35,8 @@ public class UserServiceImplTest {
     private static final String email = "test@example.com";
     private static final String phoneNumber = "123-456-7890";
 
-    @Autowired
+    @Resource
     private UserRepository userRepository;
-
-    @Autowired
-    private UserController userController;
-
-    @MockBean
-    private UserService userService;
-
-    User testUser;
-    User otherTestUser;
 
     @BeforeEach
     void setUp() {
@@ -66,8 +66,7 @@ public class UserServiceImplTest {
     }
 
     @Test
-    void saveUserTest() {
-
+    public void givenUser_whenSave_thenGetOk(){
         User retrievedUser = userRepository.findById(1L).orElse(null);
 
         assertNotNull(retrievedUser);
@@ -79,40 +78,8 @@ public class UserServiceImplTest {
         assertEquals(email, retrievedUser.getEmail());
         assertEquals(phoneNumber, retrievedUser.getPhoneNumber());
 
-    }
-
-    @Test
-    void getUsersTest() {
-        assertThat(userRepository.findAll().size() == 2);
-    }
-
-    @Test
-    void updateUserTest() {
-
-        User gottenUser = userRepository.getUserById(otherTestUser.getId());
-        User updatedUser = User.builder()
-                .id(gottenUser.getId())
-                .firstName(gottenUser.getFirstName())
-                .lastName(gottenUser.getLastName())
-                .gender("Female")
-                .age(23)
-                .email(gottenUser.getEmail())
-                .phoneNumber(gottenUser.getPhoneNumber())
-                .build();
-
-        userRepository.save(updatedUser);
-        updatedUser = userRepository.getUserById(otherTestUser.getId());
-
-        assertThat(updatedUser.getGender().equals("Female"));
-        assertThat(updatedUser.getAge().equals(23));
 
     }
 
-    @Test
-    void deleteUserTest() {
-        userRepository.deleteById(otherTestUser.getId());
-        assertThat(userRepository.findById(otherTestUser.getId()).isEmpty());
-
-    }
 
 }
